@@ -36,6 +36,7 @@ namespace WindowsFormsApp33
             comboBox3.Visible = true;
             comboBox4.Visible = true;
             comboBox5.Visible = true;
+
             Controls.Remove((MonthCalendar)sender);
         }
 
@@ -60,6 +61,7 @@ namespace WindowsFormsApp33
             comboBox3.Visible = true;
             comboBox4.Visible = true;
             comboBox5.Visible = true;
+            panel3.Visible = true;
             Controls.Remove((MonthCalendar)sender);
         }
 
@@ -77,6 +79,11 @@ namespace WindowsFormsApp33
         private void radioButton2_Click(object sender, EventArgs e)
         {
             panel2.Enabled = true;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }

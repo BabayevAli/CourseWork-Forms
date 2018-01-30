@@ -59,6 +59,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Trains.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trains.Designer.cs">
+      <DependentUpon>Trains.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Trains.resx">
+      <DependentUpon>Trains.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +120,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\userinformation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-38632_640.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-left-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrainEmptys.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

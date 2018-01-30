@@ -17,6 +17,7 @@ namespace WindowsFormsApp33
             InitializeComponent();
         }
 
+       
         MonthCalendar a = new MonthCalendar();
 
         private void panel1_Click(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace WindowsFormsApp33
             textBox3.Visible = false;
             textBox1.Visible = false;
             a.DateSelected += A_DateSelected;
+            
             Controls.Add(a);
         }
 
@@ -36,8 +38,16 @@ namespace WindowsFormsApp33
             textBox2.Visible = true;
             textBox3.Visible = true;
             textBox1.Visible = true;
-            label1.Text = a.SelectionRange.Start.ToShortDateString();
+            label2.Text = a.SelectionRange.Start.ToShortDateString();
+            label2.ForeColor = Color.FromArgb(0, 123, 200);
             Controls.Remove((MonthCalendar)sender);
+            label2.Text = a.SelectionRange.Start.ToShortDateString();
+
+        }
+
+        private void UserControl1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

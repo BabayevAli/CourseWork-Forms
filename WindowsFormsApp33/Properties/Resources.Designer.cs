@@ -63,6 +63,26 @@ namespace WindowsFormsApp33.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_38632_640 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-38632_640", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_left_512 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-left-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap main {
             get {
                 object obj = ResourceManager.GetObject("main", resourceCulture);
@@ -86,6 +106,16 @@ namespace WindowsFormsApp33.Properties {
         internal static System.Drawing.Bitmap main2 {
             get {
                 object obj = ResourceManager.GetObject("main2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TrainEmptys {
+            get {
+                object obj = ResourceManager.GetObject("TrainEmptys", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
