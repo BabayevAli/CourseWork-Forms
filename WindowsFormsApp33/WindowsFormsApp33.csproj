@@ -65,6 +65,12 @@
     <Compile Include="Trains.Designer.cs">
       <DependentUpon>Trains.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrainSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrainSelect.Designer.cs">
+      <DependentUpon>TrainSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="Trains.resx">
       <DependentUpon>Trains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainSelect.resx">
+      <DependentUpon>TrainSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -129,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TrainEmptys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GedisTrain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

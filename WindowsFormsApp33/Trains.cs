@@ -12,6 +12,8 @@ namespace WindowsFormsApp33
 {
     public partial class Trains : Form
     {
+
+        public List<string> vaku = new List<string>();
         int count = 4;
         public Trains()
         {
@@ -174,8 +176,11 @@ namespace WindowsFormsApp33
         private void Trains_Load(object sender, EventArgs e)
         {
             ContextMenu cm = new ContextMenu();
-            cm.MenuItems.Add("Adlar");
-            cm.MenuItems.Add("Adlar1");
+            foreach (var item in vaku)
+            {
+                cm.MenuItems.Add(item);
+            }
+
             cm.MenuItems[0].Click += Trains_Click;
             pictureBox1.ContextMenu = cm;
             pictureBox2.ContextMenu = cm;
@@ -184,6 +189,7 @@ namespace WindowsFormsApp33
             pictureBox5.ContextMenu = cm;
             pictureBox6.ContextMenu = cm;
             pictureBox7.ContextMenu = cm;
+
         }
 
         private void Trains_Click(object sender, EventArgs e)

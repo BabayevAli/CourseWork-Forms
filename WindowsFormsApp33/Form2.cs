@@ -20,7 +20,6 @@ namespace WindowsFormsApp33
         private void Form2_Load(object sender, EventArgs e)
         {
             tableLayoutPanel1.Controls.Add(new UserControl1());
-            tableLayoutPanel1.Controls.Add(new UserControl1());
             tableLayoutPanel1.RowCount--;
             tableLayoutPanel1.Size = new Size(tableLayoutPanel1.Size.Width,310);
             this.Size = new Size(tableLayoutPanel1.Size.Width, 310);
@@ -46,6 +45,12 @@ namespace WindowsFormsApp33
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             Trains a = new Trains();
+            List<string> va = new List<string>();
+            va.Add("Ali");
+            va.Add("Murad");
+            va.Add("Fazil");
+            va.Add("Orxan");
+            a.vaku = va;
             a.ShowDialog();
         }
     }
