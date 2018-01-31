@@ -12,11 +12,14 @@ namespace WindowsFormsApp33
 {
     public partial class Trains : Form
     {
-
+        List<string> names;
+        List<int> placenum;
         public List<string> vaku = new List<string>();
         int count = 4;
         public Trains()
         {
+            names = new List<string>();
+            placenum = new List<int>();
             InitializeComponent();
         }
 
@@ -24,158 +27,31 @@ namespace WindowsFormsApp33
         PictureBox a;
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-                a = (PictureBox)sender;
-                if (pictureBox1.BackColor == Color.Lime && count!= 0)
+            a = (PictureBox)sender;
+            if (a.BackColor == Color.Lime && count != 0)
+            {
+                a.BackColor = Color.Gray;
+                count--;
+            }
+            else if (a.BackColor == Color.Gray)
+            {
+                a.BackColor = Color.Lime;
+                count++;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                if(a.Name == "pictureBox" + i.ToString())
                 {
-                    pictureBox1.BackColor = Color.Gray;
-                    count--;
+                    placenum.Add(i);
+                    return;
                 }
-                else if (a.BackColor == Color.Gray)
-                {
-                    pictureBox1.BackColor = Color.Lime;
-                    count++;
-                }
+            }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox2.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox2.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox2.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox3.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox3.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox3.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox4.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox4.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox4.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox5.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox5.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox5.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox6.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox6.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox6.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox7.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox7.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox7.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox8.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox8.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox8.BackColor = Color.Lime;
-                    count++;
-                }
-            
-        }
-
-        private void pictureBox9_Click(object sender, EventArgs e)
-        {
-                a = (PictureBox)sender;
-
-            if (pictureBox9.BackColor == Color.Lime && count!= 0)
-                {
-                    pictureBox9.BackColor = Color.Gray;
-                    count--;
-                }
-                else if(a.BackColor == Color.Gray)
-                {
-                    pictureBox9.BackColor = Color.Lime;
-                    count++;
-               }
-            
-        }
+            ContextMenu cm = new ContextMenu();
 
         private void Trains_Load(object sender, EventArgs e)
         {
-            ContextMenu cm = new ContextMenu();
             foreach (var item in vaku)
             {
                 cm.MenuItems.Add(item);
@@ -194,7 +70,12 @@ namespace WindowsFormsApp33
 
         private void Trains_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MenuItem az = sender as MenuItem;
+            if (az != null)
+            {
+                names.Add(az.Text);
+                cm.MenuItems.Remove(az);                
+            }
         }
     }
 }
