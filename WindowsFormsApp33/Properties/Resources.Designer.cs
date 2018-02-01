@@ -73,6 +73,16 @@ namespace WindowsFormsApp33.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_bold_left_ios_7_interface_symbol_318_34824 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-bold-left-ios-7-interface-symbol_318-34824", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_left_512 {
             get {
                 object obj = ResourceManager.GetObject("arrow-left-512", resourceCulture);

@@ -18,7 +18,7 @@ namespace WindowsFormsApp33
         }
 
        
-        MonthCalendar a = new MonthCalendar();
+        public MonthCalendar a = new MonthCalendar();
 
         private void panel1_Click(object sender, EventArgs e)
         {
@@ -47,7 +47,61 @@ namespace WindowsFormsApp33
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
+            comboBox1.SelectedIndex = 0;
+        }
 
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "Ad")
+            {
+                textBox1.Clear();
+                textBox1.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            if(textBox2.Text == "Soyad")
+            {
+                textBox2.Clear();
+                textBox2.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+        }
+
+        private void textBox3_Click(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "SENEDIN SERIYA VE YA NOMRESI")
+            {
+                textBox3.Clear();
+                textBox3.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "")
+            {
+                textBox1.Text = "Ad";
+                textBox1.ForeColor = Color.Gray;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox2.Text == "")
+            {
+                textBox2.Text = "Soyad";
+                textBox2.ForeColor = Color.Gray;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "")
+            {
+                textBox3.Text = "SENEDIN SERIYA VE YA NOMRESI";
+                textBox3.ForeColor = Color.Gray;
+            }
         }
     }
 }

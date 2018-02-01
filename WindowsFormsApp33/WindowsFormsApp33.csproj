@@ -57,12 +57,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListTrains.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListTrains.Designer.cs">
-      <DependentUpon>ListTrains.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trains.cs">
@@ -88,9 +82,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListTrains.resx">
-      <DependentUpon>ListTrains.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GedisTrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-bold-left-ios-7-interface-symbol_318-34824.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

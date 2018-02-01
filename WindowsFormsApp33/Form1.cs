@@ -91,7 +91,7 @@ namespace WindowsFormsApp33
             label2.Text = f.SelectionRange.Start.ToShortDateString();
             Controls.Remove((MonthCalendar)sender);
         }
-
+        ListQatar qatarsss;
         private void panel3_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex <0 || Int32.Parse(comboBox3.SelectedItem.ToString()) +
@@ -112,16 +112,26 @@ namespace WindowsFormsApp33
             {
                 return;
             }
-            ListTrains train = new ListTrains();
+            TrainSelect train = new TrainSelect();
             train.time = f.SelectionRange.Start;
             train.gel = comboBox1.SelectedItem.ToString();
             train.get = comboBox2.SelectedItem.ToString();
             train.big = Int32.Parse(comboBox3.SelectedItem.ToString());
-            train.med = Int32.Parse(comboBox4.SelectedItem.ToString());
+            train.mid = Int32.Parse(comboBox4.SelectedItem.ToString());
             train.low = Int32.Parse(comboBox5.SelectedItem.ToString());
-
-            train.Size = new Size(1418, 627);
+            Hide();
+            qatarsss = new ListQatar();
             train.ShowDialog();
+            if(train.dialogs == DialogResult.OK)
+            {
+                MessageBox.Show("Elave Olundu");
+                qatarsss.qatars[a.SelectionStart] = new VaqonBig().places[train.trains.a.dic]
+                Show();
+            }
+            else
+            {
+                Show();
+            }
         }
 
         private void radioButton1_Click(object sender, EventArgs e)
@@ -183,14 +193,14 @@ namespace WindowsFormsApp33
     {
         public string Name, Surname, SeriaNum, Country, Cinsi;
         public DateTime Birth;
-        public User(string n , string s , string i , string c , string sex)
+        public User(string n , string s , string i , string c , string sex,DateTime time)
         {
             Name = n;
             Surname = s;
             SeriaNum = i;
             Country = c;
             Cinsi = sex;
-
+            Birth = time;
         }
     }
 
@@ -221,23 +231,15 @@ namespace WindowsFormsApp33
         }
     }
 
-    public class Qatar
-    {
-        public VaqonBig big;
-
-        public Qatar()
-        {
-            big = new VaqonBig();
-        }
-    }
 
     public class ListQatar
     {
-        public Dictionary<DateTime,Qatar> qatars;
+        public Dictionary<DateTime,VaqonBig> qatars;
 
         public ListQatar()
         {
-            qatars = new Dictionary<DateTime, Qatar>();
+            qatars = new Dictionary<DateTime, VaqonBig>();
+
         }
 
     }

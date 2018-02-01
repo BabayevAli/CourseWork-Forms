@@ -14,11 +14,26 @@ namespace WindowsFormsApp33
     {
         public string gel, get, qatar;
         public DateTime time;
+        public int big, mid, low;
+        public DialogResult dialogs;
+        public Form2 trains = new Form2();
 
         private void panel1_Click(object sender, EventArgs e)
         {
-            Form2 trains = new Form2();
+            trains.big = big;
+            trains.med = mid;
+            trains.low = low;
+            Hide();
+
             trains.ShowDialog();
+            if (trains.dialogs == DialogResult.OK)
+            {
+                dialogs = DialogResult.OK;
+            }
+            else
+            {
+                Show();
+            }
         }
 
         public TrainSelect()
@@ -34,5 +49,6 @@ namespace WindowsFormsApp33
             label17.Text = "Qatar";
             label20.Text = gel + " - " + get + "(" + time.ToShortDateString() + ")";
         }
+
     }
 }

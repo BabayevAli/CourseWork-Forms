@@ -12,11 +12,11 @@ namespace WindowsFormsApp33
 {
     public partial class Trains : Form
     {
-        public Dictionary<string, int> dic;
+        public Dictionary<string, sbyte> dic;
         public DialogResult dialogs = DialogResult.Cancel;
         public Trains()
         {
-            dic = new Dictionary<string, int>();
+            dic = new Dictionary<string, sbyte>();
             InitializeComponent();
         }
 
@@ -60,7 +60,7 @@ namespace WindowsFormsApp33
         {
             MenuItem az = (MenuItem)sender;
             a = (PictureBox)sender_;
-            for (int i = 0; i < 7; i++)
+            for (sbyte i = 0; i < 7; i++)
             {
                 if (a.Name == "pictureBox" + i.ToString())
                 {
