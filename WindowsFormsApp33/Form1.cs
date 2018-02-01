@@ -12,15 +12,37 @@ namespace WindowsFormsApp33
 {
     public partial class Form1 : Form
     {
+        bool checkdate = false;
+        MonthCalendar a = null;
+        List<string> list = new List<string>();
+        MonthCalendar f;
+
         public Form1()
         {
             InitializeComponent();
             panel2.Enabled = true;
+            list.Add("ASTARA");
+            list.Add("BAKI - SƏRN");
+            list.Add("BAŞ ƏLƏT");
+            list.Add("BİLƏCƏRİ");
+            list.Add("CƏLİLABAD");
+            list.Add("DAYKƏND");
+            list.Add("KEŞLƏ");
+            list.Add("LƏNKƏRAN");
+            list.Add("LİMAN");
+            list.Add("LÖKBATAN");
+            list.Add("MASALLI");
+            list.Add("OSMANLI");
+            list.Add("PL. 111 KM");
+            list.Add("QAMIŞLIQ");
+            list.Add("QARADAĞ");
+            list.Add("QASIMLI");
+            list.Add("QIRMIZIKƏND");
+            list.Add("SALYAN");
+            list.Add("ŞİRVAN - ÇEŞİD.");
+            list.Add("ŞİRVAN - SƏRN.");
         }
-        #region View
-        TrainSelect train = new TrainSelect();
-        bool checkdate = false;
-        MonthCalendar a = null;
+
         private void panel1_Click(object sender, EventArgs e)
         {
             a = new MonthCalendar();
@@ -33,14 +55,12 @@ namespace WindowsFormsApp33
             a.DateSelected += A_DateSelected;
             Controls.Add(a);
         }
-
         private void A_DateSelected(object sender, DateRangeEventArgs e)
         {
             comboBox3.Visible = true;
             comboBox4.Visible = true;
             comboBox5.Visible = true;
-            MonthCalendar f = (MonthCalendar)sender;
-            train.time = f.SelectionRange.Start;
+            f = (MonthCalendar)sender;
             label1.Text = f.SelectionRange.Start.ToShortDateString();
             Controls.Remove((MonthCalendar)sender);
             checkdate = true;
@@ -74,7 +94,9 @@ namespace WindowsFormsApp33
 
         private void panel3_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex <0)
+            if (comboBox1.SelectedIndex <0 || Int32.Parse(comboBox3.SelectedItem.ToString()) +
+                                               Int32.Parse(comboBox4.SelectedItem.ToString()) + 
+                                               Int32.Parse(comboBox5.SelectedItem.ToString()) == 0)
             {
                 return;
             }
@@ -90,8 +112,15 @@ namespace WindowsFormsApp33
             {
                 return;
             }
+            ListTrains train = new ListTrains();
+            train.time = f.SelectionRange.Start;
             train.gel = comboBox1.SelectedItem.ToString();
             train.get = comboBox2.SelectedItem.ToString();
+            train.big = Int32.Parse(comboBox3.SelectedItem.ToString());
+            train.med = Int32.Parse(comboBox4.SelectedItem.ToString());
+            train.low = Int32.Parse(comboBox5.SelectedItem.ToString());
+
+            train.Size = new Size(1418, 627);
             train.ShowDialog();
         }
 
@@ -105,11 +134,12 @@ namespace WindowsFormsApp33
             panel2.Enabled = true;
 
         }
-        #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             radioButton1.Checked = true;
             panel2.Enabled = false;
+            comboBox3.SelectedItem = "0";comboBox4.SelectedItem = "0";comboBox5.SelectedItem = "0";
+            
         }
 
         private void panel4_Click(object sender, EventArgs e)
@@ -117,6 +147,35 @@ namespace WindowsFormsApp33
             var az = comboBox1.SelectedItem;
             comboBox1.SelectedItem = comboBox2.SelectedItem;
             comboBox2.SelectedItem = az;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox2.SelectedItem != null && comboBox1.SelectedItem != null)
+            {
+                if (comboBox1.SelectedItem.ToString() == comboBox2.SelectedItem.ToString())
+                {
+                    MessageBox.Show("Eyni yeri secmek olmaz!!");
+                    comboBox1.SelectedItem = -1;
+                }
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem != null && comboBox2.SelectedItem != null)
+            {
+                if (comboBox2.SelectedItem.ToString() == comboBox1.SelectedItem.ToString())
+                {
+                    MessageBox.Show("Eyni yeri secmek olmaz!!");
+                    comboBox2.SelectedIndex = -1;
+                }
+            }
         }
     }
 

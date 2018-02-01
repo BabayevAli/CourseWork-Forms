@@ -12,6 +12,7 @@ namespace WindowsFormsApp33
 {
     public partial class Form2 : Form
     {
+        public int big, med, low;
         public Form2()
         {
             InitializeComponent();
@@ -19,29 +20,17 @@ namespace WindowsFormsApp33
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Controls.Add(new UserControl1());
-            tableLayoutPanel1.RowCount--;
-            tableLayoutPanel1.Size = new Size(tableLayoutPanel1.Size.Width,310);
-            this.Size = new Size(tableLayoutPanel1.Size.Width, 310);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            Hide();
-        }
-
-        private void Form2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyData == Keys.Enter)
+            for (int i = 0; i < big + med + low; i++)
             {
-                MessageBox.Show("SSSs");
+                tableLayoutPanel1.Controls.Add(new UserControl1());
+            }
+            if (big + med + low < 3)
+            {
+                tableLayoutPanel1.RowCount--;
+                tableLayoutPanel1.Size = new Size(tableLayoutPanel1.Size.Width, 310);
+                this.Size = new Size(tableLayoutPanel1.Size.Width, 310);
             }
         }
-
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             Trains a = new Trains();
@@ -50,8 +39,21 @@ namespace WindowsFormsApp33
             va.Add("Murad");
             va.Add("Fazil");
             va.Add("Orxan");
-            a.vaku = va;
+            a.LoadUsers(va);
             a.ShowDialog();
+            if (a.dialogs == DialogResult.OK)
+            {
+                Dictionary<string, int> placesinfo = a.dic;
+                foreach (var item in placesinfo.Values)
+                {
+                    MessageBox.Show(item.ToString());
+                }
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("He used back!!1");
+            }
         }
     }
 }
