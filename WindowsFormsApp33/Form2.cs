@@ -28,6 +28,7 @@ namespace WindowsFormsApp33
             for (int i = 0; i < big; i++)
             {
                 UserControl1 other = new UserControl1();
+                other.a.MaxDate = new DateTime(2002,01,01);
                 other.label3.Text = "BOYUK (Sernisin " + (i + 1).ToString() + ")";
                 bigs.Add(other); 
                 tableLayoutPanel1.Controls.Add(other);
@@ -35,6 +36,8 @@ namespace WindowsFormsApp33
             for (int i = 0; i < med; i++)
             {
                 UserControl1 other = new UserControl1();
+                other.a.MinDate = new DateTime(2002, 01, 01);
+                other.a.MaxDate = new DateTime(2012, 01, 01);
                 other.label3.Text = "USAQ (Sernisin " + (i+1).ToString() + ")";
                 mids.Add(other);
                 tableLayoutPanel1.Controls.Add(other);
@@ -97,7 +100,7 @@ namespace WindowsFormsApp33
             a.ShowDialog();
             if (a.dialogs == DialogResult.OK)
             {
-                a.DialogResult = DialogResult.OK;
+                dialogs = DialogResult.OK;
             }
             else
             {

@@ -41,11 +41,13 @@ namespace WindowsFormsApp33
             list.Add("SALYAN");
             list.Add("ŞİRVAN - ÇEŞİD.");
             list.Add("ŞİRVAN - SƏRN.");
+            qatarsss = new ListQatar();
         }
 
         private void panel1_Click(object sender, EventArgs e)
         {
             a = new MonthCalendar();
+            a.MaxDate = DateTime.Now.AddDays(10);
             a.MinDate = DateTime.Now;
             a.TabIndex = 20;
             comboBox3.Visible = false;
@@ -94,8 +96,8 @@ namespace WindowsFormsApp33
         ListQatar qatarsss;
         private void panel3_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex <0 || Int32.Parse(comboBox3.SelectedItem.ToString()) +
-                                               Int32.Parse(comboBox4.SelectedItem.ToString()) + 
+            if (comboBox1.SelectedIndex < 0 || Int32.Parse(comboBox3.SelectedItem.ToString()) +
+                                               Int32.Parse(comboBox4.SelectedItem.ToString()) +
                                                Int32.Parse(comboBox5.SelectedItem.ToString()) == 0)
             {
                 return;
@@ -104,7 +106,7 @@ namespace WindowsFormsApp33
             {
                 return;
             }
-            else if(checkdate == false)
+            else if (checkdate == false)
             {
                 return;
             }
@@ -120,12 +122,30 @@ namespace WindowsFormsApp33
             train.mid = Int32.Parse(comboBox4.SelectedItem.ToString());
             train.low = Int32.Parse(comboBox5.SelectedItem.ToString());
             Hide();
-            qatarsss = new ListQatar();
+            List<bool> bools = new List<bool>();
+            foreach (var item in qatarsss.qatars[a.SelectionStart.ToShortDateString()].places.Values)
+            {
+                if(item == null)
+                {
+                    bools.Add(true);
+                }
+                else
+                {
+                    bools.Add(false);
+                }
+            }
+            train.trains.a.pls = bools;
             train.ShowDialog();
-            if(train.dialogs == DialogResult.OK)
+            if (train.dialogs == DialogResult.OK)
             {
                 MessageBox.Show("Elave Olundu");
-                qatarsss.qatars[a.SelectionStart] = new VaqonBig().places[train.trains.a.dic]
+                Dictionary<string, sbyte> trainsplacesinfo = train.trains.a.dic;
+                var nam = trainsplacesinfo.Keys.ToList();
+                var num = trainsplacesinfo.Values.ToList();
+                for (int i = 0; i < nam.Count; i++)
+                {
+                    qatarsss.qatars[a.SelectionStart.ToShortDateString()].places[num[i]] = train.trains.users.Find(x=> x.Name == nam[i]);
+                }
                 Show();
             }
             else
@@ -148,8 +168,8 @@ namespace WindowsFormsApp33
         {
             radioButton1.Checked = true;
             panel2.Enabled = false;
-            comboBox3.SelectedItem = "0";comboBox4.SelectedItem = "0";comboBox5.SelectedItem = "0";
-            
+            comboBox3.SelectedItem = "0"; comboBox4.SelectedItem = "0"; comboBox5.SelectedItem = "0";
+
         }
 
         private void panel4_Click(object sender, EventArgs e)
@@ -166,7 +186,7 @@ namespace WindowsFormsApp33
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox2.SelectedItem != null && comboBox1.SelectedItem != null)
+            if (comboBox2.SelectedItem != null && comboBox1.SelectedItem != null)
             {
                 if (comboBox1.SelectedItem.ToString() == comboBox2.SelectedItem.ToString())
                 {
@@ -187,13 +207,14 @@ namespace WindowsFormsApp33
                 }
             }
         }
+
     }
 
     public class User
     {
         public string Name, Surname, SeriaNum, Country, Cinsi;
         public DateTime Birth;
-        public User(string n , string s , string i , string c , string sex,DateTime time)
+        public User(string n, string s, string i, string c, string sex, DateTime time)
         {
             Name = n;
             Surname = s;
@@ -203,45 +224,41 @@ namespace WindowsFormsApp33
             Birth = time;
         }
     }
-
-    //public class VaqonMini
-    //{
-    //    public Dictionary<byte, User> places;
-    //    public VaqonMini()
-    //    {
-    //        places = new Dictionary<byte, User>();
-    //    }
-    //}
-    //
-    //public class VaqonNormal
-    //{
-    //    public Dictionary<byte, User> places;
-    //    public VaqonNormal()
-    //    {
-    //        places = new Dictionary<byte, User>();
-    //    }
-    //}
-
     public class VaqonBig
     {
-        public Dictionary<byte, User> places;
+        public Dictionary<sbyte, User> places;
         public VaqonBig()
         {
-            places = new Dictionary<byte, User>();
+            places = new Dictionary<sbyte, User>();
         }
     }
 
 
     public class ListQatar
     {
-        public Dictionary<DateTime,VaqonBig> qatars;
-
+        public Dictionary<string, VaqonBig> qatars;
         public ListQatar()
         {
-            qatars = new Dictionary<DateTime, VaqonBig>();
-
+            qatars = new Dictionary<string, VaqonBig>();
+            qatars[DateTime.Now.AddDays(1).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(2).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(3).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(4).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(5).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(6).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(7).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(8).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(9).ToShortDateString()] = new VaqonBig();
+            qatars[DateTime.Now.AddDays(10).ToShortDateString()] = new VaqonBig();
+            foreach (var item in qatars.Keys)
+            {
+                for (sbyte k = 0; k < 9; k++)
+                {
+                    qatars[item].places[k] = null;
+                }
+            }
         }
 
+        
     }
-    
 }

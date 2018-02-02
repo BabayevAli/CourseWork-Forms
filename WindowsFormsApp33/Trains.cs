@@ -14,9 +14,11 @@ namespace WindowsFormsApp33
     {
         public Dictionary<string, sbyte> dic;
         public DialogResult dialogs = DialogResult.Cancel;
+        public List<bool> pls;
         public Trains()
         {
             dic = new Dictionary<string, sbyte>();
+            pls = new List<bool>();
             InitializeComponent();
         }
 
@@ -45,26 +47,53 @@ namespace WindowsFormsApp33
             {
                 cm.MenuItems.Add(item).Click += Trains_Click;
             }
-            pictureBox1.ContextMenu = cm;
-            pictureBox2.ContextMenu = cm;
-            pictureBox3.ContextMenu = cm;
-            pictureBox4.ContextMenu = cm;
-            pictureBox5.ContextMenu = cm;
-            pictureBox6.ContextMenu = cm;
-            pictureBox7.ContextMenu = cm;
-            pictureBox8.ContextMenu = cm;
-            pictureBox9.ContextMenu = cm;
+            if (pls[0])
+                pictureBox1.ContextMenu = cm;
+            else
+                pictureBox1.BackColor = Color.Red;
+            if (pls[1])
+                pictureBox2.ContextMenu = cm;
+            else
+                pictureBox2.BackColor = Color.Red;
+            if (pls[2])
+                pictureBox3.ContextMenu = cm;
+            else
+                pictureBox3.BackColor = Color.Red;
+            if (pls[3])
+                pictureBox4.ContextMenu = cm;
+            else
+                pictureBox4.BackColor = Color.Red;
+            if (pls[4])
+                pictureBox5.ContextMenu = cm;
+            else
+                pictureBox5.BackColor = Color.Red;
+            if (pls[5])
+                pictureBox6.ContextMenu = cm;
+            else
+                pictureBox6.BackColor = Color.Red;
+            if (pls[6])
+                pictureBox7.ContextMenu = cm;
+            else
+                pictureBox7.BackColor = Color.Red;
+            if (pls[7])
+                pictureBox8.ContextMenu = cm;
+            else
+                pictureBox8.BackColor = Color.Red;
+            if (pls[8])
+                pictureBox9.ContextMenu = cm;
+            else
+                pictureBox9.BackColor = Color.Red;
         }
 
         private void Trains_Click(object sender, EventArgs e)
         {
             MenuItem az = (MenuItem)sender;
             a = (PictureBox)sender_;
-            for (sbyte i = 0; i < 7; i++)
+            for (sbyte i = 1; i < 10; i++)
             {
                 if (a.Name == "pictureBox" + i.ToString())
                 {
-                    dic[az.Text] = i;
+                    dic[az.Text] = (sbyte)(i-1);
                     break;
                 }
             }
@@ -84,7 +113,7 @@ namespace WindowsFormsApp33
                 a.ContextMenu = cm;
                 if (a.BackColor == Color.Gray)
                 {
-                    for (int i = 0; i < 7; i++)
+                    for (int i = 1; i < 10; i++)
                     {
                         if (a.Name == "pictureBox" + i.ToString())
                         {

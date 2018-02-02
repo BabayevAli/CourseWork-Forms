@@ -24,7 +24,6 @@ namespace WindowsFormsApp33
             trains.med = mid;
             trains.low = low;
             Hide();
-
             trains.ShowDialog();
             if (trains.dialogs == DialogResult.OK)
             {
