@@ -103,5 +103,33 @@ namespace WindowsFormsApp33
                 textBox3.ForeColor = Color.Gray;
             }
         }
+
+        private void textBox1_MouseHover(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Ad")
+            {
+                textBox1.Clear();   
+                textBox1.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+        }
+
+        private void textBox2_MouseHover(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Soyad")
+            {
+                textBox2.Clear();
+                textBox2.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+
+        }
+
+        private void textBox3_MouseHover(object sender, EventArgs e)
+        {
+            if (textBox3.Text == "SENEDIN SERIYA VE YA NOMRESI")
+            {
+                textBox3.Clear();
+                textBox3.ForeColor = Color.FromArgb(0, 123, 200);
+            }
+        }
     }
 }

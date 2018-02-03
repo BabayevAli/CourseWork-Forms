@@ -24,6 +24,7 @@ namespace WindowsFormsApp33
 
         public void LoadUsers(List<string> users)
         {
+            dic.Clear();
             foreach (var item in users)
             {
                 dic[item] = -1;
@@ -117,7 +118,7 @@ namespace WindowsFormsApp33
                     {
                         if (a.Name == "pictureBox" + i.ToString())
                         {
-                            string key = dic.FirstOrDefault(z => z.Value == i).Key;
+                            string key = dic.FirstOrDefault(z => z.Value == i-1).Key;
                             dic[key] = -1;
                             cm.MenuItems.Add(key).Click += Trains_Click;
                             break;

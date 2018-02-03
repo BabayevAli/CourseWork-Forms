@@ -60,11 +60,14 @@ namespace WindowsFormsApp33
             {
                 users.Add(new User(item.textBox1.Text, item.textBox2.Text, item.textBox3.Text, item.comboBox1.SelectedItem.ToString(), item.groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text, item.a.SelectionStart));
             }
-            foreach (var item in users)
-            {
-                MessageBox.Show(item.ToString());
-            }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            dialogs = DialogResult.Cancel;
+            Hide();
+        }
+
         public Trains a = new Trains();
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

@@ -16,7 +16,7 @@ namespace WindowsFormsApp33
         MonthCalendar a = null;
         List<string> list = new List<string>();
         MonthCalendar f;
-
+        Dictionary<string,ListQatar> qatarsss;
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +41,15 @@ namespace WindowsFormsApp33
             list.Add("SALYAN");
             list.Add("ŞİRVAN - ÇEŞİD.");
             list.Add("ŞİRVAN - SƏRN.");
-            qatarsss = new ListQatar();
+            qatarsss = new Dictionary<string, ListQatar>();
+            foreach (var item in comboBox1.Items)
+            {
+                foreach (var item1 in comboBox2.Items)
+                {
+                    string a1 = item.ToString() + "-" + item1.ToString();
+                    qatarsss[a1] = null;
+                }
+            }
         }
 
         private void panel1_Click(object sender, EventArgs e)
@@ -93,7 +101,6 @@ namespace WindowsFormsApp33
             label2.Text = f.SelectionRange.Start.ToShortDateString();
             Controls.Remove((MonthCalendar)sender);
         }
-        ListQatar qatarsss;
         private void panel3_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex < 0 || Int32.Parse(comboBox3.SelectedItem.ToString()) +
@@ -114,6 +121,10 @@ namespace WindowsFormsApp33
             {
                 return;
             }
+            else if (qatarsss[comboBox1.SelectedItem.ToString() + "-" + comboBox2.SelectedItem.ToString()] == null)
+            {
+                qatarsss[comboBox1.SelectedItem.ToString() + "-" + comboBox2.SelectedItem.ToString()] = new ListQatar();
+            }
             TrainSelect train = new TrainSelect();
             train.time = f.SelectionRange.Start;
             train.gel = comboBox1.SelectedItem.ToString();
@@ -123,7 +134,7 @@ namespace WindowsFormsApp33
             train.low = Int32.Parse(comboBox5.SelectedItem.ToString());
             Hide();
             List<bool> bools = new List<bool>();
-            foreach (var item in qatarsss.qatars[a.SelectionStart.ToShortDateString()].places.Values)
+            foreach (var item in qatarsss[comboBox1.SelectedItem.ToString() + "-" + comboBox2.SelectedItem.ToString()].qatars[a.SelectionStart.ToShortDateString()].places.Values)
             {
                 if(item == null)
                 {
@@ -144,7 +155,7 @@ namespace WindowsFormsApp33
                 var num = trainsplacesinfo.Values.ToList();
                 for (int i = 0; i < nam.Count; i++)
                 {
-                    qatarsss.qatars[a.SelectionStart.ToShortDateString()].places[num[i]] = train.trains.users.Find(x=> x.Name == nam[i]);
+                    qatarsss[comboBox1.SelectedItem.ToString() + "-" +comboBox2.SelectedItem.ToString()].qatars[a.SelectionStart.ToShortDateString()].places[num[i]] = train.trains.users.Find(x=> x.Name == nam[i]);
                 }
                 Show();
             }
@@ -240,6 +251,7 @@ namespace WindowsFormsApp33
         public ListQatar()
         {
             qatars = new Dictionary<string, VaqonBig>();
+            qatars[DateTime.Now.AddDays(0).ToShortDateString()] = new VaqonBig();
             qatars[DateTime.Now.AddDays(1).ToShortDateString()] = new VaqonBig();
             qatars[DateTime.Now.AddDays(2).ToShortDateString()] = new VaqonBig();
             qatars[DateTime.Now.AddDays(3).ToShortDateString()] = new VaqonBig();
@@ -249,7 +261,6 @@ namespace WindowsFormsApp33
             qatars[DateTime.Now.AddDays(7).ToShortDateString()] = new VaqonBig();
             qatars[DateTime.Now.AddDays(8).ToShortDateString()] = new VaqonBig();
             qatars[DateTime.Now.AddDays(9).ToShortDateString()] = new VaqonBig();
-            qatars[DateTime.Now.AddDays(10).ToShortDateString()] = new VaqonBig();
             foreach (var item in qatars.Keys)
             {
                 for (sbyte k = 0; k < 9; k++)
