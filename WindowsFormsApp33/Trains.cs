@@ -139,8 +139,18 @@ namespace WindowsFormsApp33
                     return;
                 }
             }
-            dialogs = DialogResult.OK;
+            Odeme odeme = new Odeme();
             Hide();
+            odeme.ShowDialog();
+            if (odeme.dialogs == DialogResult.OK)
+            {
+                dialogs = DialogResult.OK;
+            }
+            else
+            {
+                dialogs = DialogResult.Cancel;
+                Show();
+            }
         }
 
         private void panel2_Click(object sender, EventArgs e)

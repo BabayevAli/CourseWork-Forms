@@ -134,11 +134,13 @@ namespace WindowsFormsApp33
             train.low = Int32.Parse(comboBox5.SelectedItem.ToString());
             Hide();
             List<bool> bools = new List<bool>();
+            int count = 0;
             foreach (var item in qatarsss[comboBox1.SelectedItem.ToString() + "-" + comboBox2.SelectedItem.ToString()].qatars[a.SelectionStart.ToShortDateString()].places.Values)
             {
                 if(item == null)
                 {
                     bools.Add(true);
+                    count++;
                 }
                 else
                 {
@@ -146,6 +148,7 @@ namespace WindowsFormsApp33
                 }
             }
             train.trains.a.pls = bools;
+            train.coun = count;
             train.ShowDialog();
             if (train.dialogs == DialogResult.OK)
             {
@@ -180,7 +183,7 @@ namespace WindowsFormsApp33
             radioButton1.Checked = true;
             panel2.Enabled = false;
             comboBox3.SelectedItem = "0"; comboBox4.SelectedItem = "0"; comboBox5.SelectedItem = "0";
-
+     
         }
 
         private void panel4_Click(object sender, EventArgs e)

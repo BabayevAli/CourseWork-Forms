@@ -17,7 +17,7 @@ namespace WindowsFormsApp33
         public int big, mid, low;
         public DialogResult dialogs;
         public Form2 trains = new Form2();
-
+        public int coun = 0;
         private void panel1_Click(object sender, EventArgs e)
         {
             trains.big = big;
@@ -47,6 +47,7 @@ namespace WindowsFormsApp33
             label16.Text = time.ToShortDateString();
             label17.Text = "Qatar";
             label20.Text = gel + " - " + get + "(" + time.ToShortDateString() + ")";
+            placeslabel.Text = coun.ToString() + " Bos yer";
         }
 
     }
